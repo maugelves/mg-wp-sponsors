@@ -29,10 +29,11 @@ include ( MGSP_PATH . "/inc/base.php" );
 
 /*
 *   =================================================================================================
-*   PLUGIN DEPENDENCIES
+*   LIBS
 *   =================================================================================================
 */
-include ( MGSP_PATH . "/inc/libs/class-tgm-plugin-activation.php" );
+foreach (glob(__DIR__ . "/inc/libs/*.php") as $filename)
+	include $filename;
 add_action( 'tgmpa_register', array( 'MGSP_Base', 'check_plugin_dependencies' ) );
 
 
@@ -58,4 +59,15 @@ foreach (glob(__DIR__ . "/inc/cpts/*.php") as $filename)
 *   =================================================================================================
 */
 foreach (glob(__DIR__ . "/inc/acfs/*.php") as $filename)
+	include $filename;
+
+
+
+
+/*
+*   =================================================================================================
+*   CLASSES
+*   =================================================================================================
+*/
+foreach (glob(__DIR__ . "/inc/classes/*.php") as $filename)
 	include $filename;
